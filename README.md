@@ -2,8 +2,6 @@
 
 ## Introduction
 
-![TWINT_code_to_collect_tweets](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
-
 READ ME: Tesla Twitter Sentiment
 
 Project Overview
@@ -75,6 +73,33 @@ The below graph shows that people tend to tweet more about Tesla on weekdays tha
 ![Tweets_by_day_of_week.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Tweets_by_day_of_week.png)
 
 ![Tweets_by_day_of_year.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Tweets_by_day_of_year.png)
+
+# Senitment Analysis on Tweets
+
+Two methods of computing sentiment score on each tweet were utilized; Vader and TextBlob.
+
+![Vader_sentiment_distribution.png]()
+
+![TextBlob_sentiment_distribution.png]()
+
+![Top_days_vader.png]()
+
+![Top_days_textblob.png]()
+
+![Worst_days_vader.png]()
+
+![Worst_days_textblob.png]()
+
+The goal of this project is to be able to compute a daily sentiment score before the market closes and be able to predict if the stock will open at a higher price the next day. The stock market is only open from 9:30 am to 4:00 pm, and in order to make a model that could be used in real life situations, we would only be able to use the tweets prior to 4:00 pm to compute a sentiment score. In order to give some time to run the model the model and buy the actual stock on a trading platform like Robinhood, tweets after 3:55 pm were dropped from the dataset.
+
+## Feature Engineering
+
+After dropping all tweets published after 3:55 pm, four more sentiment columns were added to the dataset:
+
+ - Drop all tweets that had a Vader sentiment score of 0 and then recalculate the daily average (__s1_no_0__)
+ - Drop all tweets that had a Vader sentiment score of 0 and then recalculate the daily average (__s2_no_0__)
+ - Rescaled all the Vader sentiment scores for each tweet with __MinMaxScaler()__ and then recalculate the daily average (__s1_scaled__)
+  - Rescaled all the TextBlob sentiment scores for each tweet with __MinMaxScaler()__ and then recalculate the daily average (__s2_scaled__)
 
 
 # Results
