@@ -35,16 +35,23 @@ Using a SARIMAX model, with Seasonal Order of (0,0,0,0), each of the sentiment s
 __TWINT__ was utilized to collect the tweets needed from Twitter. TWINT is an advanced Twitter scraping tool written in Python. TWINT allows you to search Twitter for tweets matching different search operators, scrape those tweets and save them into a file.
 
 The search parameters used in this project, were as follows:
- - Two search terms, company name and company ticker (__tesla__ and __tsla)
- - Start date of search
- - End date of search
+ - Two search terms, company name and company ticker (__tesla__ and __tsla__)
+ - Start date of search (__01/01/2018__)
+ - End date of search (__07/15/2019__
  - Tweets in the English language
  
 ![TWINT_code_to_collect_tweets.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/TWINT_code_to_collect_tweets.png) 
 
-were a Start Date, an End Date, and two search terms, in this case the company name and the company ticker. ‘2018-01-01’ was used as a Start Date and ‘07-14-2019’ was used for an End Date. The two search terms we wanted to search for were company name, ‘telsa’, and company ticker, ‘tsla’. In the function  ‘get_tweets’, it is clarified to only scrape Tweets that were in English.
+Each time this function was run the tweets were stored in a csv file, within a folder called __'tesla_tweets'__.
 
-After the below code was run, a csv file was saved containing 213,224 scraped tweets from January 1st, 2018 and July 14th, 2019 containing the words ‘telsa’ and/or ‘tsla’
+It was found that the shorter the time period the search was run for the more tweets would be collected. Since this was the case, each search was run over a two week period and then merged together to include 213,224 scraped tweets from January 1st, 2018 to July 14th, 2019 containing the words ‘telsa’ and/or ‘tsla’
+
+# Cleaning the Twitter Data
+
+Before obtaining the sentiment of each tweet, basic NLP preprossing steps were preformed. Http links were removed, special characters and numbers were removed, the tweets were converted to all lowercase strings and then each tweet was tokenized.
+
+![Clean_and_tokenize_tweets.png]()
+
 
 # Results
 
