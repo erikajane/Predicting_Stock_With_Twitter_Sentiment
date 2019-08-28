@@ -50,7 +50,31 @@ It was found that the shorter the time period the search was run for the more tw
 
 Before obtaining the sentiment of each tweet, basic NLP preprossing steps were preformed. Http links were removed, special characters and numbers were removed, the tweets were converted to all lowercase strings and then each tweet was tokenized.
 
-![Clean_and_tokenize_tweets.png]()
+![Clean_and_tokenize_tweets.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Clean_and_tokenize_tweets.png)
+
+Next, each tweet was lemmatized.
+
+![Lemmatize_tweets.png]()
+
+![Word_cloud_1.png]()
+
+When looking at the word cloud after our cleaning, tokenizing and lemmatizing we can see that 'tesla', 'tsla', teslaq', '#' appear very heavily in the dataset. These terms were removed from the tweets and below appears the new word cloud.
+
+![Word_cloud_2.png]()
+
+The below graph shows the top 25 words included in this dataset, with the first three being __"model", "elon"__ and __"musk__.
+
+![Most_popular_words.png]()
+
+The below graph shows that the most popular time to tweet about Tesla is between 9:00 am and 5:00 pm with 9:00 am being the most popular time to tweet.
+
+![Tweets_by_time_of_day.png]()
+
+The below graph shows that people tend to tweet more about Tesla on weekdays that weekends, with Wednesday being the most popular time to tweet about Tesla.
+
+![Tweets_by_day_of_week.png]()
+
+![Tweets_by_day_of_year.png]()
 
 
 # Results
