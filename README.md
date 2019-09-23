@@ -6,27 +6,6 @@ READ ME: Tesla Twitter Sentiment
 
 Project Overview
 
-Intro:
-Can the stock market be predicted?
-Relationship between stocks a public sentiment
-Relationship between public sentiment and twitter
-What question is this project trying to answer:
-Can we predict if the Tesla stock price will be higher at tomorrow’s opening than today’s close using sentiment from Twitter?
-
-Basic Outline
-Approached the questions as a binary classification problem with target variable as the direction of the price at opening price from the prior day’s close (-1 = Price of stock went down, 0 = Price of stock stayed the same, 1=Price of stock went up)
-Obtain tweets from twitter from January 1st, 2018 to July 14th, 2019 that contained either world ‘tesla’ or ‘tsla’ using TWINT
-Over 200,000 tweets were collected
-Each tweet was cleaned, tokenized and lemmatized
-Each tweet was given two sentiment scores, using Vader (Valence Aware Dictionary for Sentiment Reasoning) and TextBlob
-After some EDA, tweets from after 3:55 PM were removed from the dataset
-The tweets from each day were then aggregated to find a daily mean sentiment score for the day, one daily sentiment score using Vader and one using TextBlob
-After feature engineering, four more variables were created, Vader daily sentiment was recalculated after removing all the tweets with 0 sentiment as well as for TextBlob, the other two were features that had turned the sentiment scores into classes (-1=Negative daily sentiment score, 0=Neutral daily sentiment score, +1=Positive daily sentiment score)
-Daily sentiment scores were then merged with historical stock data from Yahoo Finance
-Friday sentiment scores were than aggregated so they were the average of Friday, Saturday and Sunday sentiment scores
-Removed all days without stock data
-Feature engineering: Took the day’s opening price and subtracted the prior day’s closing price as well as shifted the sentiment scores
-Using a SARIMAX model, with Seasonal Order of (0,0,0,0), each of the sentiment scores were modeled with best operational orders to find the best model
 
 # Collecting the Tweets
 
@@ -104,9 +83,21 @@ After dropping all tweets published after 3:55 pm, four more sentiment columns w
 
 # Results
 
-After running the models it was clear that this was best kept as a classification problem; __will the stock open at a higher price than today's close?__
+After running the models it was clear that this was best kept as a classification problem; __Will the stock open tomorrow at a higher price than today's close?__
 
-Using a SARIMAX model 
+Using a SARIMAX model each sentiment feauture was used as an exogenous factor to predict the difference between the opening price and the prior day's closing price (open_close_diff) and whether that difference would be positive or negative (pos_neg).
+
+## The Best Model
+
+Model: ARIMAX(open_close_diff, sentiment_1), order =(3,1,4)
+Predict that the stock will open tomorrow at a lower price than today’s closing price: 
+Precision: 0.47457627
+Predict that the stock will open tomorrow at the same price as today’s closing price:
+Precision: 0.0
+Predict that the stock will open tomorrow at a higher price than today’s closing price:
+Precision: 0.54054054
+Out of the 37 times the 
+model predicted that there would be an increase from one day’s closing price and the following day’s opening price, it was correct 20 times
 
 Predict that the stock will open tomorrow at a higher price than today’s closing price:
 Precision: 0.54054054
