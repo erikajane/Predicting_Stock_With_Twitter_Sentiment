@@ -1,10 +1,6 @@
 # Predicting_Stock_With_Twitter_Sentiment
 
-## Introduction
-
 READ ME: Tesla Twitter Sentiment
-
-Project Overview
 
 
 # Collecting the Tweets
@@ -57,17 +53,17 @@ The below graph shows that people tend to tweet more about Tesla on weekdays tha
 
 Two methods of computing sentiment score on each tweet were utilized; Vader and TextBlob.
 
-![Vader_sentiment_distribution.png]()
+![Vader_sentiment_distribution.png](http://localhost:8888/view/Images/Vader_sentiment_distribution.png)
 
-![TextBlob_sentiment_distribution.png]()
+![TextBlob_sentiment_distribution.png](http://localhost:8888/view/Images/TextBlob_sentiment_distribution.png)
 
-![Top_days_vader.png]()
+![Top_days_vader.png](http://localhost:8888/view/Images/Top_days_vader.png)
 
-![Top_days_textblob.png]()
+![Top_days_textblob.png](http://localhost:8888/view/Images/Top_days_textblob.png)
 
-![Worst_days_vader.png]()
+![Worst_days_vader.png](http://localhost:8888/view/Images/Worst_days_vader.png)
 
-![Worst_days_textblob.png]()
+![Worst_days_textblob.png](http://localhost:8888/view/Images/Worst_days_textblob.png)
 
 The goal of this project is to be able to compute a daily sentiment score before the market closes and be able to predict if the stock will open at a higher price the next day. The stock market is only open from 9:30 am to 4:00 pm, and in order to make a model that could be used in real life situations, we would only be able to use the tweets prior to 4:00 pm to compute a sentiment score. In order to give some time to run the model the model and buy the actual stock on a trading platform like Robinhood, tweets after 3:55 pm were dropped from the dataset.
 
@@ -90,17 +86,14 @@ Using a SARIMAX model each sentiment feauture was used as an exogenous factor to
 ## The Best Model
 
 Model: ARIMAX(open_close_diff, sentiment_1), order =(3,1,4)
+
 Predict that the stock will open tomorrow at a lower price than today’s closing price: 
 Precision: 0.47457627
 Predict that the stock will open tomorrow at the same price as today’s closing price:
 Precision: 0.0
 Predict that the stock will open tomorrow at a higher price than today’s closing price:
 Precision: 0.54054054
-Out of the 37 times the 
-model predicted that there would be an increase from one day’s closing price and the following day’s opening price, it was correct 20 times
 
-Predict that the stock will open tomorrow at a higher price than today’s closing price:
-Precision: 0.54054054
 Out of the 37 times the model predicted that there would be an increase from one day’s closing price and the following day’s opening price, it was correct 20 times
 
 
