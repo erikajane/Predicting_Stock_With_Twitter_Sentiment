@@ -89,8 +89,10 @@ Model: ARIMAX(open_close_diff, sentiment_1), order =(3,1,4)
 
 Predict that the stock will open tomorrow at a lower price than today’s closing price: 
 Precision: 0.47457627
+
 Predict that the stock will open tomorrow at the same price as today’s closing price:
 Precision: 0.0
+
 Predict that the stock will open tomorrow at a higher price than today’s closing price:
 Precision: 0.54054054
 
