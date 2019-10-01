@@ -105,13 +105,21 @@ In order to model each of the two target variables (__open_close_diff__) aand (_
 
 The first part of the function splits the data into a training and testing dataset. Each model will be trained off of all the data from January 5, 2018 to February 25, 2019.
 
+![Train_test_split _code.png]()
+
 Next, in order to find the appropriate model the best values for p, d and q must be evaluated. This function finds the best p, q and d values by determining which combination of these values will produce the smallest Mean Absolute Error while still producing a model that has a p value less than 0.1.
+
+![pqd_test.png]()
 
 Once the final order has been determined, the final model is able to be produced.
 
 Predicitions are then made for the target variable using the selected exogenous variable.
 
+![Model_and_predict.png]()
+
 In order to view how our predicitions compare to the actual values, a dataframe is created with the actual and predicted values.
+
+![Create_prediction_df.png]()
 
 When examining the already classified target variable (__pos_neg__), the prediction values are continous values from -1 to 1. In order to get classified predicition values, they are then reclassified as follows:
      - Predicition value < 0, becomes -1
@@ -128,6 +136,9 @@ The prediction values were also reclassified:
      - Predicition value < 0, becomes -1
      - Predicition value = 0, becomes 0
      - Prediction value > 0, becomes 1
+     
+![Reclassification_code.png]()
+
 Although the model will be created using the actual open and closing differences, the results will be readable in the same way that the results for the target variable __pos_neg__ are.
 
 After recalssifying the actua and predicted values, the precision for each class and confusion matrix for each class can be viewed.
@@ -154,6 +165,8 @@ Precision: 0.0
 __Predict that the stock will open tomorrow at a higher price than today’s closing price:
 Precision: 0.54054054__
 
+![Final_confusion_matrix.png]()
+
 Out of the 37 times the model predicted that there would be an increase from one day’s closing price and the following day’s opening price, it was correct 20 times
 
 If you were to collect tweets using TWINT containing the words ‘tesla’ and ‘tsla’ from 12:00 AM and 3:55 PM and use Vader to compute a daily sentiment score and use an ARIMAX model, you could determine if the price of the stock will open at a higher price than the close price with 54% precision.  If you were to buy the stock at about closing price right before the market closes 100 times, you would make a profit 54 times.
@@ -169,11 +182,15 @@ To adjust for this, the final model was re-run but when classifying the predicte
  
 The model was re-run but to adjust for over predicting negative values, the cutoff of the classification was tested as seen in the code below:
 
+![Code_for_adjusted_cut_off.png]()
+
 The final classification rule was as follows:
      - Predicition value < -.3, becomes -1
      - Predicition value = -.3, becomes 0
      - Prediction value > -.3, becomes 1
      
  This adjustment produced higher precision values.
+ 
+ ![Adjusted_final_confusion_matrix.png]()
  
  
