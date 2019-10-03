@@ -193,4 +193,6 @@ The final classification rule was as follows:
  
  ![Adjusted_final_confusion_matrix.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Adjusted_final_confusion_matrix.png)
  
+ __The final prediction that the stock will open tomorrow at a higher price than today’s closing price:
+Precision: 0.58823529__
  
