@@ -82,7 +82,7 @@ Models were created to investigate two target variables; The difference between 
 
 The time series for each individual target variable can be seen below:
  
- ![open_close_diff_timeseries.png]()
+ ![open_close_diff_timeseries.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/open_close_diff_timeseries.png)
  
  __Features of the plot__:
  - There appears to be no consistent trend throughout the time span. The mean is very close to zero and we see the data frequently crosses the mean line instead of staying on one side for that long.
@@ -91,7 +91,7 @@ The time series for each individual target variable can be seen below:
  - Variance appears to be constant, despite a few outliers.
  - A Dickey-Fuller Test was used to confirm that this time series is stationary.
  
- ![pos_neg_timeseries.png]()
+ ![pos_neg_timeseries.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/pos_neg_timeseries.png)
  
  __Features of the plot__: 
  - This graph is the same graph as the previous one, but instead of dollar amounts for the change in open and prior close stock price, only the direction is taken into account (+1 for a positive change, -1 for a negative change and 0 for a neutral change). This makes the graph a bit harder to interpret.
@@ -105,21 +105,21 @@ In order to model each of the two target variables (__open_close_diff__) aand (_
 
 The first part of the function splits the data into a training and testing dataset. Each model will be trained off of all the data from January 5, 2018 to February 25, 2019.
 
-![Train_test_split _code.png]()
+![Train_test_split _code.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Train_test_split%20_code.png)
 
 Next, in order to find the appropriate model the best values for p, d and q must be evaluated. This function finds the best p, q and d values by determining which combination of these values will produce the smallest Mean Absolute Error while still producing a model that has a p value less than 0.1.
 
-![pqd_test.png]()
+![pqd_test.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/pqd_test.png)
 
 Once the final order has been determined, the final model is able to be produced.
 
 Predicitions are then made for the target variable using the selected exogenous variable.
 
-![Model_and_predict.png]()
+![Model_and_predict.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Model_and_predict.png)
 
 In order to view how our predicitions compare to the actual values, a dataframe is created with the actual and predicted values.
 
-![Create_prediction_df.png]()
+![Create_prediction_df.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Create_prediction_df.png)
 
 When examining the already classified target variable (__pos_neg__), the prediction values are continous values from -1 to 1. In order to get classified predicition values, they are then reclassified as follows:
      - Predicition value < 0, becomes -1
@@ -137,7 +137,7 @@ The prediction values were also reclassified:
      - Predicition value = 0, becomes 0
      - Prediction value > 0, becomes 1
      
-![Reclassification_code.png]()
+![Reclassification_code.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Reclassification_code.png)
 
 Although the model will be created using the actual open and closing differences, the results will be readable in the same way that the results for the target variable __pos_neg__ are.
 
@@ -165,7 +165,7 @@ Precision: 0.0
 __Predict that the stock will open tomorrow at a higher price than today’s closing price:
 Precision: 0.54054054__
 
-![Final_confusion_matrix.png]()
+![Final_confusion_matrix.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Final_confusion_matrix.png)
 
 Out of the 37 times the model predicted that there would be an increase from one day’s closing price and the following day’s opening price, it was correct 20 times
 
@@ -182,7 +182,7 @@ To adjust for this, the final model was re-run but when classifying the predicte
  
 The model was re-run but to adjust for over predicting negative values, the cutoff of the classification was tested as seen in the code below:
 
-![Code_for_adjusted_cut_off.png]()
+![Code_for_adjusted_cut_off.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Code_for_adjusted_cut_off.png)
 
 The final classification rule was as follows:
      - Predicition value < -.3, becomes -1
@@ -191,6 +191,6 @@ The final classification rule was as follows:
      
  This adjustment produced higher precision values.
  
- ![Adjusted_final_confusion_matrix.png]()
+ ![Adjusted_final_confusion_matrix.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Adjusted_final_confusion_matrix.png)
  
  
