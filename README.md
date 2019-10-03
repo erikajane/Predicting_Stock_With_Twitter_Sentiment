@@ -63,7 +63,7 @@ Two methods of computing sentiment score on each tweet were utilized; Vader and 
 
 ![Worst_days_vader.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Worst_days_vader.png)
 
-![Worst_days_textblob.png](hhttps://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Worst_days_textblob.png)
+![Worst_days_textblob.png](https://github.com/erikajane/Predicting_Stock_With_Twitter_Sentiment/blob/master/Images/Worst_days_textblob.png)
 
 The goal of this project is to be able to compute a daily sentiment score before the market closes and be able to predict if the stock will open at a higher price the next day. The stock market is only open from 9:30 am to 4:00 pm EST, and in order to make a model that could be used in real life situations, we would only be able to use the tweets prior to 4:00 pm to compute a sentiment score. In order to give some time to run the model the model and buy the actual stock on a trading platform like Robinhood, tweets after 3:55 pm were dropped from the dataset.
 
